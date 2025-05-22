@@ -1,0 +1,146 @@
+<!-- /Users/qiansui/Desktop/Freelancer/mock_up/index.html -->
+<!-- This file serves as the main entry point that displays all the mock interfaces using iframes -->
+<!-- According to the design rules, this file will show all pages together with descriptions -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loadshift Chrome Extension Demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .page-container {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            padding: 40px;
+        }
+        .mock-frame {
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .chrome-top {
+            background: #f1f5f9;
+            border-bottom: 1px solid #e2e8f0;
+            padding: 8px 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .chrome-circle {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        .red { background-color: #ef4444; }
+        .yellow { background-color: #f59e0b; }
+        .green { background-color: #10b981; }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto max-w-7xl">
+        <header class="bg-white p-6 mb-8 shadow-sm">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h1 class="text-3xl font-bold text-blue-800">Loadshift Chrome Extension Demo</h1>
+                    <p class="text-gray-600 mt-2">A mock interface for the Loadshift Chrome Extension designed to help truck drivers find and analyze transport jobs.</p>
+                </div>
+                <img src="../public/logo.jpeg" alt="Loadshift Logo" class="h-12">
+            </div>
+        </header>
+        
+        <div class="page-container">
+            <!-- Main Popup UI Section -->
+            <section class="bg-white p-6 rounded-lg shadow-sm">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-4">1. Main Popup Interface</h2>
+                <div class="flex flex-col md:flex-row gap-8">
+                    <div class="md:w-1/2">
+                        <p class="text-gray-700 mb-4">This is the main popup interface that appears when users click on the Chrome extension icon. It allows truck drivers to:</p>
+                        <ul class="list-disc pl-5 space-y-2 text-gray-600">
+                            <li>Select from their saved trucks or add a new one</li>
+                            <li>Enter transport preferences including origin/destination, date range, and cargo details</li>
+                            <li>Select additional preferences like route options</li>
+                            <li>Click "Find Perfect Match" to search for suitable transport jobs</li>
+                        </ul>
+                    </div>
+                    <div class="md:w-1/2">
+                        <div class="mock-frame">
+                            <div class="chrome-top">
+                                <div class="chrome-circle red"></div>
+                                <div class="chrome-circle yellow"></div>
+                                <div class="chrome-circle green"></div>
+                                <span class="text-xs text-gray-500 ml-2">Loadshift Assistant</span>
+                            </div>
+                            <iframe src="popup.html" width="400" height="600" frameborder="0"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Analysis Page Section -->
+            <section class="bg-white p-6 rounded-lg shadow-sm">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-4">2. Analysis & Transport Plans Page</h2>
+                <div class="flex flex-col md:flex-row gap-8">
+                    <div class="md:w-1/2">
+                        <p class="text-gray-700 mb-4">After clicking "Find Perfect Match", the system analyzes the driver's requirements and displays matching transport plans:</p>
+                        <ul class="list-disc pl-5 space-y-2 text-gray-600">
+                            <li>Shows a step-by-step progress bar of the AI analysis process</li>
+                            <li>Displays a list of recommended transport plans with key details</li>
+                            <li>Highlights matching score, estimated profit, and route information</li>
+                            <li>Allows users to click "View Details" to see comprehensive analysis of each plan</li>
+                        </ul>
+                    </div>
+                    <div class="md:w-1/2">
+                        <div class="mock-frame">
+                            <div class="chrome-top">
+                                <div class="chrome-circle red"></div>
+                                <div class="chrome-circle yellow"></div>
+                                <div class="chrome-circle green"></div>
+                                <span class="text-xs text-gray-500 ml-2">Loadshift Assistant - Analysis</span>
+                            </div>
+                            <iframe src="analysis.html" width="400" height="600" frameborder="0"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Details Page Section -->
+            <section class="bg-white p-6 rounded-lg shadow-sm">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-4">3. Transport Plan Details Page</h2>
+                <div class="flex flex-col md:flex-row gap-8">
+                    <div class="md:w-1/2">
+                        <p class="text-gray-700 mb-4">The details page showcases the AI-powered analysis for a specific transport plan:</p>
+                        <ul class="list-disc pl-5 space-y-2 text-gray-600">
+                            <li>Provides basic transport information including shipper, receiver, and cargo details</li>
+                            <li>Shows comprehensive cost analysis with breakdown of expenses</li>
+                            <li>Displays weather analysis along the route with safety recommendations</li>
+                            <li>Provides traffic and duration analysis with optimal route suggestions</li>
+                            <li>Offers a summary with AI-driven recommendations and insights</li>
+                            <li>Includes a "Place Bid" button that links to the Loadshift website</li>
+                        </ul>
+                    </div>
+                    <div class="md:w-1/2">
+                        <div class="mock-frame">
+                            <div class="chrome-top">
+                                <div class="chrome-circle red"></div>
+                                <div class="chrome-circle yellow"></div>
+                                <div class="chrome-circle green"></div>
+                                <span class="text-xs text-gray-500 ml-2">Loadshift Assistant - Plan Details</span>
+                            </div>
+                            <iframe src="detail.html" width="400" height="600" frameborder="0"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <footer class="mt-12 p-6 text-center text-gray-600">
+            <p>Loadshift Chrome Extension Demo - For product interview demonstration purposes only</p>
+            <p class="text-sm mt-2">© 2025 - All design elements and mockups are not functional</p>
+        </footer>
+    </div>
+</body>
+</html>

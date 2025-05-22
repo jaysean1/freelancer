@@ -1,0 +1,190 @@
+[
+  {
+    "loadId": "39382879",
+    "title": "Mitsubishi Pajero Sport",
+    "status": "Open",
+    "quotes": 8,
+    "averageQuote": "$1,536 AUD",
+    "timestamp": "2 hours ago",
+    "vehicle": {
+      "makeModel": "Mitsubishi Pajero Sport",
+      "type": "Car",
+      "condition": ["Driveable", "Registered"],
+      "dimensions": {
+        "length": "4,825mm",
+        "width": "1,815mm",
+        "height": "2,000mm"
+      },
+      "quantity": 1,
+      "weight": "2,100 kg",
+      "totalWeight": "2,100 kg"
+    },
+    "pickup": {
+      "location": "Bronte, NSW 2024",
+      "availableFrom": "22 May 2025",
+      "siteType": "Commercial",
+      "facilities": "Not provided",
+      "notes": "Not provided"
+    },
+    "delivery": {
+      "location": "Goodwood, SA 5034",
+      "deliverBy": "03 Jun 2025",
+      "siteType": "Industrial",
+      "facilities": "Not provided",
+      "notes": "Not provided"
+    },
+    "distance": "1,375.15 km",
+    "description": "Load description not provided.",
+    "shipper": {
+      "location": "Sydney, Australia",
+      "rating": 0.0,
+      "reviewCount": 0,
+      "memberSince": "May 7, 2025",
+      "verification": {
+        "email": true,
+        "phone": true
+      }
+    }
+  },
+  {
+    "loadId": "39433222",
+    "title": "car melbourne to gold coast",
+    "status": "Open",
+    "timestamp": "57 minutes ago",
+    "vehicle": {
+      "makeModel": "i20",
+      "type": "Car",
+      "dimensions": {
+        "length": "--",
+        "width": "--",
+        "height": "--"
+      },
+      "quantity": 1,
+      "weight": "--",
+      "totalWeight": "--"
+    },
+    "pickup": {
+      "location": "Sunshine, VIC 3020",
+      "availableFrom": "21 May 2025",
+      "siteType": "Not provided",
+      "facilities": "Not provided",
+      "notes": "Not provided"
+    },
+    "delivery": {
+      "location": "Gold Coast, QLD 4215",
+      "deliverBy": "Not provided",
+      "siteType": "Not provided",
+      "facilities": "Not provided",
+      "notes": "Not provided"
+    },
+    "distance": "1,713.96 km",
+    "description": "Load description not provided."
+  },
+  {
+    "loadId": "39432512",
+    "title": "Bmw 330d",
+    "status": "Open",
+    "quotes": 3,
+    "averageQuote": "$1,048 AUD",
+    "timestamp": "7 hours ago",
+    "vehicle": {
+      "makeModel": "Bmw 330d",
+      "type": "Car",
+      "condition": ["Driveable", "Empty", "Not registered"],
+      "dimensions": {
+        "length": "--",
+        "width": "--",
+        "height": "--"
+      },
+      "quantity": 1,
+      "weight": "--",
+      "totalWeight": "--"
+    },
+    "pickup": {
+      "location": "Bundoora, VIC 3083",
+      "availableFrom": "Urgent",
+      "siteType": "Commercial",
+      "facilities": "Forklift",
+      "notes": "Not provided"
+    },
+    "delivery": {
+      "location": "Belconnen, ACT 2617",
+      "deliverBy": "Urgent",
+      "siteType": "Residential",
+      "facilities": "Not provided",
+      "notes": "Not provided"
+    },
+    "distance": "639.77 km",
+    "description": "Load description not provided."
+  },
+  {
+    "loadId": "39433361",
+    "title": "DAF 105",
+    "status": "Open",
+    "timestamp": "2 minutes ago",
+    "vehicle": {
+      "makeModel": "DAF 105",
+      "type": "Truck or Prime Mover",
+      "condition": ["Driveable", "Not new", "Not registered"],
+      "dimensions": {
+        "length": "--",
+        "width": "--",
+        "height": "--"
+      },
+      "quantity": 2,
+      "weight": "--",
+      "totalWeight": "--"
+    },
+    "pickup": {
+      "location": "Walpa, VIC 3875",
+      "availableFrom": "Estimate only",
+      "siteType": "Auction yard",
+      "facilities": "Not provided",
+      "notes": "Not provided"
+    },
+    "delivery": {
+      "location": "Riverton, WA 6148",
+      "deliverBy": "Estimate only",
+      "siteType": "Residential",
+      "facilities": "Not provided",
+      "notes": "Not provided"
+    },
+    "distance": "3,591.49 km",
+    "description": "Load description not provided."
+  },
+  {
+    "loadId": "39433331",
+    "title": "2 x Freightliner Coronado Prime Movers",
+    "status": "Open",
+    "timestamp": "17 minutes ago",
+    "vehicle": {
+      "makeModel": "Freightliner Coronado",
+      "type": "Truck or Prime Mover",
+      "condition": ["Driveable", "Not new", "Not registered"],
+      "dimensions": {
+        "length": "--",
+        "width": "--",
+        "height": "--"
+      },
+      "quantity": 2,
+      "weight": "--",
+      "totalWeight": "--"
+    },
+    "pickup": {
+      "location": "Perth Airport, WA 6105",
+      "availableFrom": "21 May 2025",
+      "siteType": "Auction yard",
+      "facilities": "Not provided",
+      "notes": "Not provided"
+    },
+    "delivery": {
+      "location": "Not provided",
+      "deliverBy": "Not provided",
+      "siteType": "Not provided",
+      "facilities": "Not provided",
+      "notes": "Not provided"
+    },
+    "distance": "Not provided",
+    "description": "Load description not provided."
+  }
+]

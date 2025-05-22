@@ -1,0 +1,403 @@
+<!-- /Users/qiansui/Desktop/Freelancer/mock_up/analysis.html -->
+<!-- This file contains the analysis page for the Loadshift Chrome Extension, where users can see the progress of the analysis and the transport plan list -->
+<!-- This is NOT meant to handle actual data processing or API calls, but to demonstrate the UI design and user flow -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loadshift Assistant - Analysis</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            width: 400px;
+            max-height: 600px;
+            overflow-y: auto;
+        }
+        .progress-bar {
+            transition: width 0.8s ease;
+        }
+        .load-card {
+            transition: all 0.3s ease;
+        }
+        .load-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+        .skeleton {
+            background: #f0f0f0;
+            border-radius: 4px;
+            animation: pulse 1.5s infinite;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="container mx-auto p-4">
+        <!-- Header -->
+        <div class="flex items-center justify-between mb-6">
+            <div class="flex items-center">
+                <img src="../public/logo.jpeg" alt="Loadshift Logo" class="h-8 mr-2">
+                <h1 class="text-xl font-bold text-blue-800">Loadshift Assistant</h1>
+            </div>
+            <a href="popup.html" class="text-gray-500 hover:text-gray-700">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg>
+            </a>
+        </div>
+
+        <!-- Progress Section -->
+        <div class="bg-white p-4 rounded-lg border border-gray-200 mb-6">
+            <h2 class="text-lg font-semibold text-gray-800 mb-4">Analyzing Transport Options</h2>
+            
+            <!-- Progress Bar -->
+            <div class="w-full bg-gray-200 rounded-full h-2.5 mb-3">
+                <div class="progress-bar bg-blue-600 h-2.5 rounded-full w-0" id="progressBar"></div>
+            </div>
+            
+            <!-- Progress Steps -->
+            <div class="grid grid-cols-5 gap-2 mb-4 relative">
+                <!-- Progress Line -->
+                <div class="absolute top-4 left-0 right-0 h-0.5 bg-gray-200 z-0"></div>
+                
+                <!-- Step 1 -->
+                <div class="flex flex-col items-center relative z-10" id="step1">
+                    <div class="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center mb-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-500"><path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.85.83 6.72 2.23"></path><path d="M21 3v9h-9"></path></svg>
+                    </div>
+                    <span class="text-xs text-gray-500 text-center">Analyzing Needs</span>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="flex flex-col items-center relative z-10" id="step2">
+                    <div class="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center mb-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-500"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
+                    </div>
+                    <span class="text-xs text-gray-500 text-center">Searching Loads</span>
+                </div>
+                
+                <!-- Step 3 -->
+                <div class="flex flex-col items-center relative z-10" id="step3">
+                    <div class="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center mb-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-500"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path><polyline points="14 2 14 8 20 8"></polyline><path d="M16 13H8"></path><path d="M16 17H8"></path><path d="M10 9H8"></path></svg>
+                    </div>
+                    <span class="text-xs text-gray-500 text-center">Fetching Details</span>
+                </div>
+                
+                <!-- Step 4 -->
+                <div class="flex flex-col items-center relative z-10" id="step4">
+                    <div class="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center mb-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-500"><circle cx="18" cy="18" r="3"></circle><circle cx="6" cy="6" r="3"></circle><path d="M13 6h3a2 2 0 0 1 2 2v7"></path><path d="M11 18H8a2 2 0 0 1-2-2V9"></path></svg>
+                    </div>
+                    <span class="text-xs text-gray-500 text-center">Smart Matching</span>
+                </div>
+                
+                <!-- Step 5 -->
+                <div class="flex flex-col items-center relative z-10" id="step5">
+                    <div class="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center mb-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-500"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><path d="m9 11 3 3L22 4"></path></svg>
+                    </div>
+                    <span class="text-xs text-gray-500 text-center">Generating Plans</span>
+                </div>
+            </div>
+            
+            <!-- Status Text -->
+            <p class="text-sm text-gray-600 text-center italic" id="statusText">Analyzing your requirements and preferences...</p>
+        </div>
+
+        <!-- Transport Plans Section (Initially Hidden) -->
+        <div id="plansContainer" class="hidden">
+            <h2 class="text-lg font-semibold text-gray-800 mb-4">Recommended Transport Plans</h2>
+            
+            <div class="space-y-4">
+                <!-- Plan 1 -->
+                <div class="load-card bg-white p-4 rounded-lg border border-blue-200 shadow-sm cursor-pointer">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-medium text-blue-800">Sydney to Melbourne - General Freight</h3>
+                        <div class="flex items-center bg-blue-50 px-2 py-0.5 rounded-full">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600 mr-1"><path d="M20 6 9 17l-5-5"></path></svg>
+                            <span class="text-xs font-medium text-blue-800">Perfect Match</span>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-2 mb-3">
+                        <div>
+                            <p class="text-sm text-gray-500">Distance</p>
+                            <p class="text-sm font-medium">878 km</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500">Est. Time</p>
+                            <p class="text-sm font-medium">10-12 hours</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500">Load Weight</p>
+                            <p class="text-sm font-medium">18.5 tons</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500">Est. Profit</p>
+                            <p class="text-sm font-medium text-green-600">$1,250 - $1,450</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center text-sm text-gray-600">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-1 text-gray-400"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path><path d="m6 9 6 6 6-6"></path></svg>
+                        Route: Sydney → Goulburn → Canberra → Albury → Melbourne
+                    </div>
+                    <div class="mt-3 flex justify-between items-center">
+                        <div class="flex">
+                            <div class="flex items-center mr-3">
+                                <span class="text-amber-400">★★★★★</span>
+                                <span class="text-xs text-gray-600 ml-1">AI Match</span>
+                            </div>
+                            <div class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600 mr-1"><path d="M12 20v-6"></path><path d="M17 20v-3"></path><path d="M7 20v-9"></path><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                                <span class="text-xs text-gray-600">3 Offers</span>
+                            </div>
+                        </div>
+                        <a href="detail.html" class="text-blue-600 text-sm font-medium hover:text-blue-800">View Details →</a>
+                    </div>
+                </div>
+
+                <!-- Plan 2 -->
+                <div class="load-card bg-white p-4 rounded-lg border border-gray-200 shadow-sm cursor-pointer">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-medium text-gray-800">Sydney to Melbourne - Electronics</h3>
+                        <div class="flex items-center bg-gray-50 px-2 py-0.5 rounded-full">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-amber-500 mr-1"><path d="M12 2 4 10l8 8 8-8-8-8z"></path></svg>
+                            <span class="text-xs font-medium text-gray-700">High Value</span>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-2 mb-3">
+                        <div>
+                            <p class="text-sm text-gray-500">Distance</p>
+                            <p class="text-sm font-medium">900 km</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500">Est. Time</p>
+                            <p class="text-sm font-medium">11-13 hours</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500">Load Weight</p>
+                            <p class="text-sm font-medium">14.2 tons</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500">Est. Profit</p>
+                            <p class="text-sm font-medium text-green-600">$1,600 - $1,800</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center text-sm text-gray-600">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-1 text-gray-400"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path><path d="m6 9 6 6 6-6"></path></svg>
+                        Route: Sydney → Goulburn → Yass → Holbrook → Melbourne
+                    </div>
+                    <div class="mt-3 flex justify-between items-center">
+                        <div class="flex">
+                            <div class="flex items-center mr-3">
+                                <span class="text-amber-400">★★★★☆</span>
+                                <span class="text-xs text-gray-600 ml-1">AI Match</span>
+                            </div>
+                            <div class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600 mr-1"><path d="M12 20v-6"></path><path d="M17 20v-3"></path><path d="M7 20v-9"></path><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                                <span class="text-xs text-gray-600">2 Offers</span>
+                            </div>
+                        </div>
+                        <a href="detail.html" class="text-blue-600 text-sm font-medium hover:text-blue-800">View Details →</a>
+                    </div>
+                </div>
+
+                <!-- Plan 3 -->
+                <div class="load-card bg-white p-4 rounded-lg border border-gray-200 shadow-sm cursor-pointer">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-medium text-gray-800">Sydney to Canberra - Building Materials</h3>
+                        <div class="flex items-center bg-green-50 px-2 py-0.5 rounded-full">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-600 mr-1"><path d="M12 2v4"></path><path d="M12 18v4"></path><path d="m4.93 10.93 2.83-2.83"></path><path d="M16.24 16.24 19.07 19.07"></path><path d="M2 12h4"></path><path d="M18 12h4"></path><path d="m10.93 4.93-2.83-2.83"></path><path d="m19.07 4.93-2.83 2.83"></path></svg>
+                            <span class="text-xs font-medium text-green-800">Quick Trip</span>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-2 mb-3">
+                        <div>
+                            <p class="text-sm text-gray-500">Distance</p>
+                            <p class="text-sm font-medium">290 km</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500">Est. Time</p>
+                            <p class="text-sm font-medium">3-4 hours</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500">Load Weight</p>
+                            <p class="text-sm font-medium">22.8 tons</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500">Est. Profit</p>
+                            <p class="text-sm font-medium text-green-600">$600 - $750</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center text-sm text-gray-600">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-1 text-gray-400"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path><path d="m6 9 6 6 6-6"></path></svg>
+                        Route: Sydney → Campbelltown → Goulburn → Canberra
+                    </div>
+                    <div class="mt-3 flex justify-between items-center">
+                        <div class="flex">
+                            <div class="flex items-center mr-3">
+                                <span class="text-amber-400">★★★☆☆</span>
+                                <span class="text-xs text-gray-600 ml-1">AI Match</span>
+                            </div>
+                            <div class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600 mr-1"><path d="M12 20v-6"></path><path d="M17 20v-3"></path><path d="M7 20v-9"></path><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                                <span class="text-xs text-gray-600">5 Offers</span>
+                            </div>
+                        </div>
+                        <a href="detail.html" class="text-blue-600 text-sm font-medium hover:text-blue-800">View Details →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Loading Skeleton (Initially Visible) -->
+        <div id="loadingSkeleton" class="space-y-4">
+            <!-- Skeleton Item 1 -->
+            <div class="bg-white p-4 rounded-lg border border-gray-200">
+                <div class="flex justify-between items-start mb-2">
+                    <div class="skeleton h-5 w-3/5"></div>
+                    <div class="skeleton h-5 w-1/4 rounded-full"></div>
+                </div>
+                <div class="grid grid-cols-2 gap-2 mb-3">
+                    <div>
+                        <div class="skeleton h-4 w-1/2 mb-1"></div>
+                        <div class="skeleton h-4 w-3/4"></div>
+                    </div>
+                    <div>
+                        <div class="skeleton h-4 w-1/2 mb-1"></div>
+                        <div class="skeleton h-4 w-3/4"></div>
+                    </div>
+                    <div>
+                        <div class="skeleton h-4 w-1/2 mb-1"></div>
+                        <div class="skeleton h-4 w-3/4"></div>
+                    </div>
+                    <div>
+                        <div class="skeleton h-4 w-1/2 mb-1"></div>
+                        <div class="skeleton h-4 w-3/4"></div>
+                    </div>
+                </div>
+                <div class="skeleton h-4 w-full mb-3"></div>
+                <div class="flex justify-between">
+                    <div class="skeleton h-4 w-1/3"></div>
+                    <div class="skeleton h-4 w-1/5"></div>
+                </div>
+            </div>
+            
+            <!-- Skeleton Item 2 -->
+            <div class="bg-white p-4 rounded-lg border border-gray-200">
+                <div class="flex justify-between items-start mb-2">
+                    <div class="skeleton h-5 w-3/5"></div>
+                    <div class="skeleton h-5 w-1/4 rounded-full"></div>
+                </div>
+                <div class="grid grid-cols-2 gap-2 mb-3">
+                    <div>
+                        <div class="skeleton h-4 w-1/2 mb-1"></div>
+                        <div class="skeleton h-4 w-3/4"></div>
+                    </div>
+                    <div>
+                        <div class="skeleton h-4 w-1/2 mb-1"></div>
+                        <div class="skeleton h-4 w-3/4"></div>
+                    </div>
+                    <div>
+                        <div class="skeleton h-4 w-1/2 mb-1"></div>
+                        <div class="skeleton h-4 w-3/4"></div>
+                    </div>
+                    <div>
+                        <div class="skeleton h-4 w-1/2 mb-1"></div>
+                        <div class="skeleton h-4 w-3/4"></div>
+                    </div>
+                </div>
+                <div class="skeleton h-4 w-full mb-3"></div>
+                <div class="flex justify-between">
+                    <div class="skeleton h-4 w-1/3"></div>
+                    <div class="skeleton h-4 w-1/5"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simulating progress animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const progressBar = document.getElementById('progressBar');
+            const statusText = document.getElementById('statusText');
+            const steps = [
+                document.getElementById('step1'),
+                document.getElementById('step2'),
+                document.getElementById('step3'),
+                document.getElementById('step4'),
+                document.getElementById('step5')
+            ];
+            const plansContainer = document.getElementById('plansContainer');
+            const loadingSkeleton = document.getElementById('loadingSkeleton');
+            
+            const statusTexts = [
+                "Analyzing your requirements and preferences...",
+                "Searching for matching loads across Australia...",
+                "Fetching detailed information for potential matches...",
+                "Using AI to evaluate optimal routes and profitability...",
+                "Generating personalized transport plans based on your truck specs..."
+            ];
+            
+            let currentStep = 0;
+
+            // 初始化进度条和步骤状态
+            function resetProgress() {
+                progressBar.style.width = '0%';
+                steps.forEach((step, idx) => {
+                    const stepElement = step.querySelector('div');
+                    const stepIcon = step.querySelector('svg');
+                    stepElement.classList.remove('bg-blue-600');
+                    stepElement.classList.add('bg-gray-200');
+                    stepIcon.classList.remove('text-white');
+                    stepIcon.classList.add('text-gray-500');
+                });
+                statusText.textContent = statusTexts[0];
+            }
+
+            function updateStep(step) {
+                // Update progress bar
+                progressBar.style.width = (step + 1) * 20 + '%';
+                // Update step indicators
+                for (let i = 0; i <= step; i++) {
+                    const stepElement = steps[i].querySelector('div');
+                    const stepIcon = steps[i].querySelector('svg');
+                    stepElement.classList.remove('bg-gray-200');
+                    stepElement.classList.add('bg-blue-600');
+                    stepIcon.classList.remove('text-gray-500');
+                    stepIcon.classList.add('text-white');
+                }
+                // Update status text
+                statusText.textContent = statusTexts[step];
+            }
+
+            // Simulate progress with random step duration
+            function randomDelay(min, max) {
+                return Math.floor(Math.random() * (max - min + 1)) + min;
+            }
+
+            function progressStep() {
+                if (currentStep < 5) {
+                    updateStep(currentStep);
+                    currentStep++;
+                    setTimeout(progressStep, randomDelay(600, 1800)); // 每步0.6~1.8秒
+                } else {
+                    setTimeout(() => {
+                        // Show plans and hide skeleton
+                        plansContainer.classList.remove('hidden');
+                        loadingSkeleton.classList.add('hidden');
+                    }, 500);
+                }
+            }
+
+            // 每次页面加载都从头开始动画
+            resetProgress();
+            currentStep = 0;
+            progressStep();
+        });
+    </script>
+</body>
+</html>

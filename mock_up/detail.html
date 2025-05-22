@@ -1,0 +1,354 @@
+<!-- /Users/qiansui/Desktop/Freelancer/mock_up/detail.html -->
+<!-- This file contains the detailed analysis page for a selected transport plan -->
+<!-- This is NOT meant to handle actual data processing or API calls, but to demonstrate the UI design and user flow -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loadshift Assistant - Plan Details</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            width: 400px;
+            max-height: 600px;
+            overflow-y: auto;
+        }
+        .analysis-card {
+            transition: all 0.3s ease;
+        }
+        .analysis-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .chart-container {
+            height: 120px;
+            position: relative;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="container mx-auto p-4">
+        <!-- Header -->
+        <div class="flex items-center justify-between mb-5">
+            <div class="flex items-center">
+                <img src="../public/logo.jpeg" alt="Loadshift Logo" class="h-8 mr-2">
+                <h1 class="text-xl font-bold text-blue-800">Loadshift Assistant</h1>
+            </div>
+            <a href="analysis.html" class="text-gray-500 hover:text-gray-700">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg>
+            </a>
+        </div>
+
+        <!-- Load Summary Card -->
+        <div class="bg-white p-4 rounded-lg border border-blue-200 mb-5">
+            <div class="flex justify-between items-start mb-3">
+                <h2 class="text-lg font-semibold text-blue-800">Sydney to Melbourne - General Freight</h2>
+                <div class="flex items-center bg-blue-50 px-2 py-0.5 rounded-full">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600 mr-1"><path d="M20 6 9 17l-5-5"></path></svg>
+                    <span class="text-xs font-medium text-blue-800">Perfect Match</span>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-3 mb-4">
+                <div>
+                    <p class="text-xs text-gray-500">Load ID</p>
+                    <p class="text-sm font-medium">#LS-87654321</p>
+                </div>
+                <div>
+                    <p class="text-xs text-gray-500">Shipper</p>
+                    <p class="text-sm font-medium">AusFreight Ltd.</p>
+                </div>
+                <div>
+                    <p class="text-xs text-gray-500">Weight</p>
+                    <p class="text-sm font-medium">18.5 tons</p>
+                </div>
+                <div>
+                    <p class="text-xs text-gray-500">Volume</p>
+                    <p class="text-sm font-medium">42 m³</p>
+                </div>
+                <div>
+                    <p class="text-xs text-gray-500">Loading Time</p>
+                    <p class="text-sm font-medium">May 24, 06:00-10:00</p>
+                </div>
+                <div>
+                    <p class="text-xs text-gray-500">Delivery Time</p>
+                    <p class="text-sm font-medium">May 25, 08:00-12:00</p>
+                </div>
+            </div>
+            
+            <div class="flex items-center justify-between bg-blue-50 p-2 rounded">
+                <div class="flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600 mr-2"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path><path d="m15 9-6 6"></path><path d="m9 9 6 6"></path></svg>
+                    <div>
+                        <p class="text-xs text-gray-600">AI Overall Assessment</p>
+                        <p class="text-sm font-medium text-blue-800">Excellent Match (4.8/5.0)</p>
+                    </div>
+                </div>
+                <div class="text-amber-400 text-lg font-bold">★★★★★</div>
+            </div>
+        </div>
+
+        <!-- Analysis Sections -->
+        <div class="space-y-5">
+            <!-- Cost Analysis -->
+            <div class="analysis-card bg-white p-4 rounded-lg border border-gray-200">
+                <div class="flex items-center mb-3">
+                    <div class="bg-green-100 rounded-full p-2 mr-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-600"><path d="M12 2v20"></path><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                    </div>
+                    <h3 class="text-base font-semibold text-gray-800">Cost Analysis</h3>
+                </div>
+                
+                <div class="mb-4">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-sm text-gray-600">Total Estimated Cost</span>
+                        <span class="text-lg font-bold text-gray-800">$1,050</span>
+                    </div>
+                    <div class="flex justify-between items-center mb-1">
+                        <span class="text-sm text-gray-600">Load Payment</span>
+                        <span class="text-sm font-medium text-green-600">$2,500</span>
+                    </div>
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="text-sm text-gray-600">Estimated Profit</span>
+                        <span class="text-sm font-medium text-green-600">$1,450</span>
+                    </div>
+                </div>
+                
+                <div class="mb-3">
+                    <p class="text-xs text-gray-500 mb-2">Cost Breakdown</p>
+                    <div class="chart-container bg-gray-50 rounded p-2 mb-2">
+                        <!-- Simplified Cost Breakdown Chart -->
+                        <div class="flex h-full items-end">
+                            <div class="w-1/2 h-full flex flex-col justify-between pr-2">
+                                <div class="flex items-center">
+                                    <span class="w-3 h-3 bg-blue-500 rounded-sm mr-1"></span>
+                                    <span class="text-xs text-gray-600">Fuel: $670 (64%)</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <span class="w-3 h-3 bg-amber-500 rounded-sm mr-1"></span>
+                                    <span class="text-xs text-gray-600">Tolls: $180 (17%)</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <span class="w-3 h-3 bg-green-500 rounded-sm mr-1"></span>
+                                    <span class="text-xs text-gray-600">Maintenance: $120 (11%)</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <span class="w-3 h-3 bg-purple-500 rounded-sm mr-1"></span>
+                                    <span class="text-xs text-gray-600">Other: $80 (8%)</span>
+                                </div>
+                            </div>
+                            <div class="w-1/2 h-full relative">
+                                <!-- Simplified Pie Chart Visualization -->
+                                <div class="absolute top-0 right-0 bottom-0 left-0 flex items-center justify-center">
+                                    <svg width="100" height="100" viewBox="0 0 100 100">
+                                        <circle cx="50" cy="50" r="45" fill="transparent" stroke="#3B82F6" stroke-width="45" stroke-dasharray="282.6 439.6" transform="rotate(-90 50 50)" />
+                                        <circle cx="50" cy="50" r="45" fill="transparent" stroke="#F59E0B" stroke-width="45" stroke-dasharray="74.6 439.6" transform="rotate(192.6 50 50)" />
+                                        <circle cx="50" cy="50" r="45" fill="transparent" stroke="#10B981" stroke-width="45" stroke-dasharray="48.4 439.6" transform="rotate(267.2 50 50)" />
+                                        <circle cx="50" cy="50" r="45" fill="transparent" stroke="#8B5CF6" stroke-width="45" stroke-dasharray="35.2 439.6" transform="rotate(315.6 50 50)" />
+                                        <circle cx="50" cy="50" r="25" fill="white" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-sm text-gray-600">
+                    <p class="mb-2">
+                        <span class="font-medium">AI Analysis:</span> Based on your truck's fuel efficiency (42L/100km) and the route distance (878km), your estimated fuel costs are optimized. Current diesel prices along this route average $1.82/L.
+                    </p>
+                    <p>You'll encounter approximately $180 in tolls, which is standard for this route. Maintenance costs are calculated based on your truck's specifications and the load weight.</p>
+                </div>
+            </div>
+            <!-- Weather Analysis -->
+            <div class="analysis-card bg-white p-4 rounded-lg border border-gray-200 mb-4">
+                <div class="flex items-center mb-3">
+                    <div class="bg-blue-100 rounded-full p-2 mr-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600"><path d="M20 16.2A4.5 4.5 0 0 0 17.5 8h-1.8A7 7 0 1 0 4 14.9"></path><path d="M16 14v2"></path><path d="M8 14v2"></path><path d="M12 16v2"></path></svg>
+                    </div>
+                    <h3 class="text-base font-semibold text-gray-800">Weather Analysis</h3>
+                </div>
+                
+                <div class="overflow-x-auto mb-3">
+                    <div class="flex space-x-2 py-2 min-w-max">
+                        <!-- Sydney -->
+                        <div class="bg-blue-50 rounded p-2 text-center min-w-[90px]">
+                            <p class="text-xs font-medium text-gray-700 mb-1">Sydney</p>
+                            <div class="text-center mb-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-amber-500 mx-auto"><circle cx="12" cy="12" r="5"></circle><path d="M12 1v2"></path><path d="M12 21v2"></path><path d="M4.2 4.2l1.4 1.4"></path><path d="M18.4 18.4l1.4 1.4"></path><path d="M1 12h2"></path><path d="M21 12h2"></path><path d="M4.2 19.8l1.4-1.4"></path><path d="M18.4 5.6l1.4-1.4"></path></svg>
+                            </div>
+                            <p class="text-sm font-medium">24°C</p>
+                            <p class="text-xs text-gray-500">Clear</p>
+                        </div>
+                        
+                        <!-- Goulburn -->
+                        <div class="bg-blue-50 rounded p-2 text-center min-w-[90px]">
+                            <p class="text-xs font-medium text-gray-700 mb-1">Goulburn</p>
+                            <div class="text-center mb-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-400 mx-auto"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path></svg>
+                            </div>
+                            <p class="text-sm font-medium">18°C</p>
+                            <p class="text-xs text-gray-500">Cloudy</p>
+                        </div>
+                        
+                        <!-- Canberra -->
+                        <div class="bg-blue-50 rounded p-2 text-center min-w-[90px]">
+                            <p class="text-xs font-medium text-gray-700 mb-1">Canberra</p>
+                            <div class="text-center mb-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-400 mx-auto"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"></path><path d="M16 14v6"></path><path d="M8 14v6"></path><path d="M12 16v6"></path></svg>
+                            </div>
+                            <p class="text-sm font-medium">16°C</p>
+                            <p class="text-xs text-gray-500">Light Rain</p>
+                        </div>
+                        
+                        <!-- Albury -->
+                        <div class="bg-blue-50 rounded p-2 text-center min-w-[90px]">
+                            <p class="text-xs font-medium text-gray-700 mb-1">Albury</p>
+                            <div class="text-center mb-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-400 mx-auto"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path></svg>
+                            </div>
+                            <p class="text-sm font-medium">19°C</p>
+                            <p class="text-xs text-gray-500">Partly Cloudy</p>
+                        </div>
+                        
+                        <!-- Melbourne -->
+                        <div class="bg-yellow-50 rounded p-2 text-center min-w-[90px]">
+                            <p class="text-xs font-medium text-gray-700 mb-1">Melbourne</p>
+                            <div class="text-center mb-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600 mx-auto"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"></path><path d="M16 14v6"></path><path d="M8 14v6"></path><path d="M12 16v6"></path></svg>
+                            </div>
+                            <p class="text-sm font-medium">14°C</p>
+                            <p class="text-xs text-gray-500">Heavy Rain</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mb-3 bg-yellow-50 border-l-4 border-yellow-400 p-3 rounded">
+                    <p class="text-sm text-yellow-800">
+                        <span class="font-medium">⚠️ Weather Alert:</span> Expect moderate to heavy rain in Melbourne on arrival day. Please prepare appropriate covers and rain gear for unloading.
+                    </p>
+                </div>
+                
+                <div class="text-sm text-gray-600">
+                    <p class="mb-2">
+                        <span class="font-medium">AI Analysis:</span> Weather conditions are generally favorable for most of your journey. You'll encounter light rain near Canberra that shouldn't significantly impact driving conditions.
+                    </p>
+                    <p>The main concern is Melbourne's heavy rainfall forecast for your arrival time. Consider adjusting your schedule to arrive earlier or later to avoid the heaviest precipitation, or prepare accordingly for wet conditions during unloading.</p>
+                </div>
+            </div>
+            
+            <!-- Traffic & Duration Analysis -->
+            <div class="analysis-card bg-white p-4 rounded-lg border border-gray-200 mb-4">
+                <div class="flex items-center mb-3">
+                    <div class="bg-red-100 rounded-full p-2 mr-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-red-600"><path d="M22 12c0 6-4.39 11-9.97 11S2 18 2 12C2 6.35 6.58 2 12.15 2c.7 0 1.39.07 2.05.19M17 12v.01"></path><path d="M5.24 9.32a6 6 0 0 0 0 5.36"></path><path d="m12.82 20.62-1.32-5.51a2 2 0 1 1 2.71-2.43"></path></svg>
+                    </div>
+                    <h3 class="text-base font-semibold text-gray-800">Traffic & Route Analysis</h3>
+                </div>
+                
+                <div class="mb-4">
+                    <div class="grid grid-cols-2 gap-3 mb-3">
+                        <div>
+                            <p class="text-xs text-gray-500">Total Distance</p>
+                            <p class="text-sm font-medium">878 km</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-500">Estimated Duration</p>
+                            <p class="text-sm font-medium">10-12 hours</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-500">Recommended Stops</p>
+                            <p class="text-sm font-medium">2 stops (Goulburn, Albury)</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-500">Best Departure</p>
+                            <p class="text-sm font-medium">May 24, 05:00</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Simple Route Map -->
+                    <div class="relative bg-gray-100 rounded-lg mb-3 overflow-hidden" style="aspect-ratio: 1/1;">
+                        <img src="../public/map.png" alt="Route Map" class="w-full h-full object-contain">
+                        <div class="absolute top-2 right-2 bg-white rounded-full p-1 shadow-sm">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600"><path d="M15 15v6"></path><path d="M15 9v6"></path><path d="M9 9v6"></path><path d="M9 3v6"></path><circle cx="9" cy="15" r="0"></circle><circle cx="15" cy="9" r="0"></circle><circle cx="15" cy="21" r="0"></circle><circle cx="9" cy="3" r="0"></circle></svg>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="space-y-2 mb-3">
+                    <div class="flex items-start">
+                        <div class="bg-amber-100 rounded-full p-1 mr-2 mt-0.5">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-amber-600"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><path d="M12 9v4"></path><path d="M12 17h.01"></path></svg>
+                        </div>
+                        <div class="text-sm text-gray-600">
+                            <p><span class="font-medium">Traffic Alert:</span> Road construction on M31 near Holbrook. Expect 15-20 minute delays.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="bg-green-100 rounded-full p-1 mr-2 mt-0.5">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-600"><path d="M20 4v16H4V4"></path><path d="M4 13h16"></path></svg>
+                        </div>
+                        <div class="text-sm text-gray-600">
+                            <p><span class="font-medium">Rest Stops:</span> Quality rest areas available at Goulburn (156km) and Albury (489km) with truck parking and facilities.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-sm text-gray-600">
+                    <p class="mb-2">
+                        <span class="font-medium">AI Analysis:</span> The recommended route via M31 Hume Highway is optimal for your truck type and load. Early morning departure (5:00 AM) helps avoid Sydney morning traffic.
+                    </p>
+                    <p>An alternate route via Princes Highway adds 45km but may be considered if weather conditions worsen on the inland route. Overall traffic conditions are favorable for your planned travel date.</p>
+                </div>
+            </div>
+            
+            <!-- Summary & Recommendations -->
+            <div class="analysis-card bg-white p-4 rounded-lg border border-gray-200 mb-6">
+                <div class="flex items-center mb-3">
+                    <div class="bg-blue-100 rounded-full p-2 mr-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><path d="m9 11 3 3L22 4"></path></svg>
+                    </div>
+                    <h3 class="text-base font-semibold text-gray-800">Summary & Recommendations</h3>
+                </div>
+                
+                <div class="mb-4">
+                    <div class="flex justify-between items-center mb-3">
+                        <div class="flex items-center">
+                            <span class="text-sm font-medium text-gray-700 mr-2">AI Evaluation Score</span>
+                            <div class="bg-green-100 text-green-800 text-xs font-medium px-2 py-0.5 rounded-full">4.8/5.0</div>
+                        </div>
+                        <div class="flex">
+                            <span class="text-amber-400">★★★★★</span>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-blue-50 p-3 rounded-md mb-3">
+                        <p class="text-sm font-medium text-blue-800 mb-2">Key Insights</p>
+                        <ul class="space-y-2">
+                            <li class="flex items-start">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-600 mr-2 mt-0.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><path d="m9 11 3 3L22 4"></path></svg>
+                                <span class="text-sm text-gray-600">This is a high-value load with excellent profit potential, perfectly suited for your truck specifications.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-600 mr-2 mt-0.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><path d="m9 11 3 3L22 4"></path></svg>
+                                <span class="text-sm text-gray-600">Recommended departure time of 5:00 AM will help you avoid traffic congestion and optimize your driving schedule.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-600 mr-2 mt-0.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><path d="m9 11 3 3L22 4"></path></svg>
+                                <span class="text-sm text-gray-600">Prepare for rain in Melbourne upon arrival - bring appropriate gear and coordinate with the receiver for covered unloading if possible.</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Place Bid Button -->
+                    <a href="https://www.loadshift.com.au/projects/car/Toyota-Rav-Hybrid-39431525/details" target="_blank" class="block w-full bg-green-600 hover:bg-green-700 text-white py-3 px-4 rounded-lg font-medium text-center">
+                        Place Bid on Loadshift
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
